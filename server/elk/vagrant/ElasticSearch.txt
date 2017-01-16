@@ -1,0 +1,26 @@
+{
+    "query": {
+        "match": {
+            "name": "orion1"
+        }
+    }
+}
+
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET _search
+{
+    "query": {
+        "match": {
+            "title": {      
+                "query":    "orion1",
+                "operator": "and"
+            }
+        }
+    }
+}
