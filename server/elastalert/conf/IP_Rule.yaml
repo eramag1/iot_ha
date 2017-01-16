@@ -1,0 +1,12 @@
+# Alert when a single user has connections from 2 IPs
+filter:
+  - term:
+      _type: ssh
+  - term:
+      outcome: success
+type: cardinality
+max_cardinality: 1
+cardinality_field: ip_address
+timeframe:
+  days: 1
+query_key: username
