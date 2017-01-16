@@ -1,0 +1,166 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+info:
+  version: v2
+  title: NGSIV2 management API
+  description: The FIWARE NGSI (Next Generation Service Interface) API 
+host: 'orion.lab.fiware.org:1026'
+basePath: /v2
+schemes:
+  - http  
+securityDefinitions:
+  OauthSecurity:
+    type: oauth2
+    flow: password    
+    tokenUrl: 'https://orion.lab.fiware.org/token'
+paths:
+  /entities:
+    get:
+      security:
+        - OauthSecurity: []
+      description: |
+        Gets 'entities' objects.
+      tags:
+        - Entity
+      summary: Entity list
+      operationId: get_entities
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            title: ArrayOfEntities
+            type: array
+            items:
+              $ref: '#/definitions/Entitie'
+      deprecated: false
+    post:
+      security:
+        - OauthSecurity: []
+      tags:
+        - Entity
+      summary: Creates an entity
+      description: >-
+        Add an entity.
+      operationId: create_account
+      consumes:
+        - application/json
+        - text/json
+        - application/x-www-form-urlencoded
+      produces:
+        - application/json
+        - text/json
+      parameters:
+        - name: entity
+          in: body
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/Entity'
+      responses:
+        '201':
+          description: The entity has been created
+          schema:
+            $ref: '#/definitions/Entity'
+        '400':
+          description: Bad Request. See response body for details
+          schema:
+            $ref: '#/definitions/Error'
+      deprecated: false
+  /entities/{entityId}:
+    get:
+      security:
+        - OauthSecurity: []
+      description: |
+        Gets an 'entity' object.
+      tags:
+        - Entity
+      summary: Entity
+      operationId: get_entity
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+      parameters:
+        - name: entityId
+          in: path
+          description: The entity id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Entity'
+      deprecated: false
+/entities/{entityId}/attr:
+    get:
+      security:
+        - OauthSecurity: []
+      description: |
+        Gets attributes of an 'entity'
+      tags:
+        - Entity
+      summary: Entity
+      operationId: get_entity_attr
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+      parameters:
+        - name: entityId
+          in: path
+          description: The entity id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Entity'
+      deprecated: false    
+definitions:
+  Entity:
+    description: Entity information
+    type: object
+    required:
+    properties:
+      id:
+         description: Public unique identifier of the entity
+         type: string
+      type:
+         description: The friendly name of the account for display purposes
+         type: string
+      $ref: '#/definitions/Attributes'
+  Attributes:
+    description: Entity Attributes
+    type: object
+    required:
+    properties:
+      key:
+         description: Attribute name
+         type: string
+      value:
+         description: Attribute value
+         type: string
+  Object:
+    type: object
+    properties: {}
+  Error:
+    required:
+      - StatusCode
+    type: object
+    properties:
+      StatusCode:
+        format: int32
+        type: integer
+      Message:
+        type: string
+      Detail:
+        $ref: '#/definitions/Object'
+        
