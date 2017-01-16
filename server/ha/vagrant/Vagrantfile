@@ -1,0 +1,74 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Fix Vagrant 1.8.5 bug
+  # config.ssh.insert_key = false
+  
+  config.vm.provider :virtualbox do |vb|
+      vb.customize ["modifyvm", :id, "--cpus", "1", "--memory", "512"]
+  end
+
+  config.vm.define :mongo do |mongo_config|
+
+        # Cent OS 6.7 base image
+        mongo_config.vm.box = "bento/centos-6.7"
+
+        mongo_config.vm.hostname = 'mongo' 
+	mongo_config.vm.network :private_network, ip: "172.28.33.10" 
+  
+  	# This script will be run at startup
+  	mongo_config.vm.provision :shell, path: "provision-mongo.sh"
+  
+  	# Network configuration
+  	mongo_config.vm.network "forwarded_port", host: 27017, guest: 27017 # Mongo port
+  end
+
+  config.vm.define :orion1 do |orion1_config|
+
+        # Cent OS 6.7 base image
+        orion1_config.vm.box = "bento/centos-6.7"
+
+        orion1_config.vm.hostname = 'orion1' 
+	orion1_config.vm.network :private_network, ip: "172.28.33.11" 
+  
+  	# This script will be run at startup
+  	orion1_config.vm.provision :shell, path: "provision-orion.sh"
+  
+  	# Network configuration
+  	orion1_config.vm.network "forwarded_port", host: 1026, guest: 1026 # Orion port
+  end
+
+ config.vm.define :orion2 do |orion2_config|
+
+        # Cent OS 6.7 base image
+        orion2_config.vm.box = "bento/centos-6.7"
+
+        orion2_config.vm.hostname = 'orion2' 
+	orion2_config.vm.network :private_network, ip: "172.28.33.12" 
+  
+  	# This script will be run at startup
+  	orion2_config.vm.provision :shell, path: "provision-orion.sh"
+  
+  	# Network configuration
+  	orion2_config.vm.network "forwarded_port", host: 1027, guest: 1026 # Orion port
+  end
+
+  config.vm.define :haproxy, primary: true do |haproxy_config|
+
+    #haproxy_config.vm.box = "precise32"
+    #haproxy_config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+
+    haproxy_config.vm.box = "bento/ubuntu-16.04"
+
+    haproxy_config.vm.hostname = 'haproxy'
+    haproxy_config.vm.network :forwarded_port, host: 8080, guest: 8080
+    haproxy_config.vm.network :forwarded_port, host: 1025, guest: 1026
+    haproxy_config.vm.network :private_network, ip: "172.28.33.1"
+    haproxy_config.vm.provision :shell, :path => "provision-haproxy.sh"
+  end
+ 
+end

@@ -1,0 +1,22 @@
+HAPROXY ADMIN CONSOLE
+http://localhost:8080/haproxy?stats
+
+CONTEXT BROKER REQUEST INPUT
+http://localhost:1025/version
+
+ORION 1
+http://localhost:1026/version
+
+ORION 2
+http://localhost:1027/version
+
+MONGODB
+http://localhost:27017
+
+Elastic Filebeat
+https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html
+
+  paths:
+        - /var/log/contextBroker/*.log
+  elasticsearch:
+        hosts: ["172.28.1.10:9200"]
