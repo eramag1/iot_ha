@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ANOMALIES</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="/static/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/static/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/static/assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<a href="http://localhost:5000/" class="logo"><strong>Success</strong> <span>BACK</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+
+				<!-- Banner -->
+					<section id="banner" class="major">
+						<div class="inner">
+							<header class="major">
+								<h1>ENTITY ATTRIBUTES</h1>
+							</header>
+							<div class="content">
+                                    <p>ID :  {{ entity.id }}<br /> TYPE :  {{ entity.type }} <br /> TEMPERATURE  :  {{ entity.temperature.value }} <br />  PRESSURE :  {{ entity.pressure.value }} <br />   </p>
+
+                            </div>
+						</div>
+					</section>
+
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li>
+								<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+								
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/static/assets/js/jquery.min.js"></script>
+			<script src="/static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="/static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="/static/assets/js/skel.min.js"></script>
+			<script src="/static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/static/assets/js/main.js"></script>
+
+	</body>
+</html>

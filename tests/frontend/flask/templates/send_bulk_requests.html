@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Send Masive Request</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="/static/assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="/static/assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="/static/assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="/static/assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="http://localhost:5000/" class="logo"><strong>Anomaly</strong> <span>Detection</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="{{ url_for('send_bulk_request') }}">Send massive request</a></li>
+							<li><a href="{{ url_for('create_entity') }}">Create Entity</a></li>
+							<li><a href="{{ url_for('list_entities') }}">List Entities</a></li>
+							<li><a href="{{ url_for('update_entity') }}">Update Entity</a></li>
+                            <li><a href="{{ url_for('delete_entity') }}">Delete Entity</a></li>
+						</ul>
+						<ul class="actions vertical">
+							<li><a href="#" class="button special fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
+
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Send Masive Request</h1>
+							</header>
+
+						</div>
+					</section>
+
+				<!-- Main -->
+					<div id="main">
+
+
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action = "{{ url_for('send_bulk_request') }}" method = "post">
+									<div>
+										<label for="ip">IP</label>
+										<input type="text" name="ip" id="ip" />
+									</div>
+
+                                    <ul class="actions">
+										<li><input type="submit"  value="Send" class="special"  /></li>
+
+									</ul>
+                                    <p></p>
+
+                                    <h1>IP Changed</h1>
+                                    <p></p>
+									<div class="field half first">
+										<label for="ipchange">IP</label>
+										<input type="text" name="ipchange" id="ipchange" />
+									</div>
+
+									<ul class="actions">
+										<li><input type="submit"  value="Send" class="special"  /></li>
+
+									</ul>
+								</form>
+							</section>
+
+
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li>
+								<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+								
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../static/assets/js/jquery.min.js"></script>
+			<script src="../static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="../static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="../static/assets/js/skel.min.js"></script>
+			<script src="../static/assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../static/assets/js/main.js"></script>
+
+	</body>
+</html>
